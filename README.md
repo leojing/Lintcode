@@ -9,3 +9,18 @@
        二分法，将list不断拆分为2个list进行merge，最后list中剩余2个item的时候进行两两merge
   - Soultion 2:
        将所有ListNode中的node取出存入priority_queue，进行排序后组建成新的ListNode
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 资料
+- https://techiedelight.quora.com/500-Data-Structures-and-Algorithms-interview-questions-and-their-solutions
