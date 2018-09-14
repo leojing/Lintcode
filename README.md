@@ -9,7 +9,10 @@
        二分法，将list不断拆分为2个list进行merge，最后list中剩余2个item的时候进行两两merge
   - Soultion 2:
        将所有ListNode中的node取出存入priority_queue，进行排序后组建成新的ListNode
-
+- 486- 和104一样
+- 577- Merge K Sorted Interval Lists
+  - 也可用二分法，和104，486类似。
+  - 本题若用priority_queue解法，关键在于使用tuple进行二维数组操作。
 
 
 
