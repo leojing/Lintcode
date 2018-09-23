@@ -28,3 +28,6 @@
 
 # 资料
 - https://techiedelight.quora.com/500-Data-Structures-and-Algorithms-interview-questions-and-their-solutions
+- https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/
+- http://fisherlei.blogspot.com/search/label/hash
+- http://www.1point3acres.com/bbs/thread-441415-1-1.html
