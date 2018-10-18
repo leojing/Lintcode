@@ -16,6 +16,12 @@
 - 88- Lowest Common Ancestor in a Binary Tree—Using Single Traversal
   - The method 1 finds LCA in O(n) time, but requires three tree traversals plus extra spaces for path arrays. If we assume that the keys n1 and n2 are present in Binary Tree, we can find LCA using single traversal of Binary Tree and without extra storage for path arrays.
   - The idea is to traverse the tree starting from root. If any of the given keys(n1 and n2) matches with root, then root is LCA (assuming that both keys are present). If root doesn’t match with any of the keys, we recur for left and right subtree. The node which has one key present in its left subtree and the other key present in right subtree is the LCA. If both keys lie in left subtree, then left subtree has LCA also, otherwise LCA lies in right subtree.
+- 223- LinkedList 回文判断
+  - 时间复杂度O(n)-准确说是O(n/2), 根据大O计算法则就是O(n)，找中间节点的、反转、对比都是O(n/2)。
+  - 空间复杂度O(1), 没有开辟任何新内存空间，都是基于本身的ListNode进行的操作。
+  - 1，寻找中间节点，fast指针走两步，slow指针走一步
+  - 2，将后半部分反转
+  - 3，对比前后半部分ListNode，一样就返回true
 
 
 
