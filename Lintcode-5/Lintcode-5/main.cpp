@@ -41,7 +41,7 @@ int partition(std::vector<int> &nums, int low, int high) {
     int i = low;
     int j;
     for (j = low; j < high; j ++) {
-        if (nums[j] > pivot) {
+        if (nums[j] < pivot) {
             swap(nums[j], nums[i]);
             i += 1;
         }
@@ -50,32 +50,37 @@ int partition(std::vector<int> &nums, int low, int high) {
     return i;
 }
 
-void quickSort(std::vector<int> &nums, int low, int high) {
+void quickSort(std::vector<int> &nums, int low, int high, int k) {
     if (low < high) {
         int pivot = partition(nums, low, high);
-        quickSort(nums, low, pivot-1);
-        quickSort(nums, pivot+1, high);
+        if (pivot > k) {
+            quickSort(nums, low, pivot - 1, k);
+        } else if (pivot < k) {
+            quickSort(nums, pivot + 1, high, k);
+        }
     }
 }
 
-int kthLargestElement(int n, std::vector<int> &nums) {
+int findKthLargest(std::vector<int>& nums, int k) {
     int numsCount = int(nums.size());
-    if (n > numsCount) {
+    if (k > numsCount) {
         return -1;
     }
-    quickSort(nums, 0, numsCount-1);
-    return nums[n-1];
+    quickSort(nums, 0, numsCount-1, numsCount-k);
+    return nums[numsCount-k];
 }
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::vector<int> nums;
-    nums.push_back(1);
-    nums.push_back(3);
+    nums.push_back(7);
+    nums.push_back(6);
+    nums.push_back(5);
     nums.push_back(4);
+    nums.push_back(3);
     nums.push_back(2);
-    nums.push_back(8);
-    std::cout << kthLargestElement(1, nums) << "\n";
+    nums.push_back(1);
+    std::cout << findKthLargest(nums, 5) << "\n";
     return 0;
 }
 
@@ -86,5 +91,8 @@ int main(int argc, const char * argv[]) {
  
  Solution 2:
     - 使用快排思想，可以优化到O(NLogN) time, O(1) extra memory.
+ 
+ Optimization:
+    - 一个很聪明的优化，因为我们要找第k个大的数，所以其实做二分的时候，可以只取k所在的那个区间的进行后面的排序，因为另一个区间的数组，无论如何都比k小，所以无所谓排不排序，这样可以把time优化到O(N)，省去了二分的logN
  */
 
