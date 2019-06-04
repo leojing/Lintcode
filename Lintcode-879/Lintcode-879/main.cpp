@@ -30,15 +30,15 @@ std::string findContestMatch(int n) {
     std::queue<std::string> forwardQ = std::queue<std::string>();
     std::queue<std::string> tempForwardQ = std::queue<std::string>();
     
-    std::stack<std::string> backwardQ = std::stack<std::string>();
-    std::stack<std::string> tempBackwardQ = std::stack<std::string>();
+    std::stack<std::string>* backwardQ = new std::stack<std::string>();
+    std::stack<std::string>* tempBackwardQ = new std::stack<std::string>();
     
     int i, j;
     for (i = 1; i <= n/2; i ++) {
         forwardQ.push(std::to_string(i));
     }
     for (j = i; j <= n; j ++) {
-        backwardQ.push(std::to_string(j));
+        backwardQ->push(std::to_string(j));
     }
     int count = int(forwardQ.size());
     int tempCount;
@@ -46,8 +46,8 @@ std::string findContestMatch(int n) {
         std::string first = forwardQ.front();
         forwardQ.pop();
         
-        std::string last = backwardQ.top();
-        backwardQ.pop();
+        std::string last = backwardQ->top();
+        backwardQ->pop();
         
         tempCount = int(forwardQ.size());
         std::string result = mergeTwoString(first, last);
@@ -57,14 +57,14 @@ std::string findContestMatch(int n) {
         if (tempCount >= count/2) {
             tempForwardQ.push(result);
         } else {
-            tempBackwardQ.push(result);
+            tempBackwardQ->push(result);
         }
         
         if (tempCount == 0) {
             forwardQ = tempForwardQ;
-            backwardQ = tempBackwardQ;
+            *backwardQ = *tempBackwardQ; // 如果初始化为指针，则这里赋值的话，不能直接赋值指针，而是要把这个queue本身的数据赋值过去
             emptyQueue(&tempForwardQ); // 这里记得要请空
-            emptyStack(&tempBackwardQ); // 同上
+            emptyStack(tempBackwardQ); // 同上
             count = int(forwardQ.size());
         }
     }
@@ -73,7 +73,7 @@ std::string findContestMatch(int n) {
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << findContestMatch(2) << "\n";
+    std::cout << findContestMatch(16) << "\n";
     return 0;
 }
 
