@@ -91,7 +91,7 @@ int main(int argc, const char * argv[]) {
 
 /*
  ###算法
- 二分法，找到mid，判断这个数处于上升、下降或者peak（结果，return peak）
+ 二分法，找到mid，通过和mid-1，mid+1比较，判断出mid这个数处于上升、下降或者peak（结果，return peak）
  
  ###代码实现
  ***有什么要注意的地方
