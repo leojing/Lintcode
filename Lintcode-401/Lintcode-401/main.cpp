@@ -105,5 +105,7 @@ Time O(KlogT)，查找K次，每次进行（一次pq.pop()=logT，两次pq.push(
 Space O(n)，n为pq的大小，也是n is the maximum of the width and height of the matrix.
 
 ###相关题目
-Leetcode 988. Smallest String Starting From Leaf
+Lintcode 791. Merge Number
+Lintcode 465. Kth Smallest Sum In Two Sorted Arrays
+Lintcode 5. Kth Largest Element
 */
