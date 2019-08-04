@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "removeNode(DoubleLinkedList*):main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "set(int, int):main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "head">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "insertToTail(int, int):main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "LRUCache(int):main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "get(int):main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "head">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "removeFromHead():main.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
