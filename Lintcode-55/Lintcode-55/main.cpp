@@ -10,6 +10,8 @@
 #include <string>
 #include <map>
 
+using namespace std;
+
 bool compareStrings(std::string &A, std::string &B) {
     if (A.length() == 0 && B.length() == 0) {
         return true;
