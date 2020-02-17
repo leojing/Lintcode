@@ -18,13 +18,14 @@ public:
     }
 };
 
-ListNode * partition(ListNode * head, int x) {
+// Solution 1:
+ListNode * partition1(ListNode * head, int x) {
     ListNode *dummySmallNode = new ListNode(0);
     ListNode *currSmall = NULL;
-    
+
     ListNode *dummyLargeNode = new ListNode(0);
     ListNode *currLarge = NULL;
-    
+
     ListNode *current = head;
     while (current) {
         if (current->val < x) {
@@ -55,6 +56,30 @@ ListNode * partition(ListNode * head, int x) {
     }
 }
 
+// Solution 2: Solution 1的简化版解法是一样的
+ListNode * partition(ListNode * head, int x) {
+    ListNode *dummySmallNode = new ListNode(0);
+    ListNode *currSmall = dummySmallNode;
+    
+    ListNode *dummyLargeNode = new ListNode(0);
+    ListNode *currLarge = dummyLargeNode;
+    
+    ListNode *current = head;
+    while (current) {
+        if (current->val < x) {
+            currSmall->next = current;
+            currSmall = current;
+        } else {
+            currLarge->next = current;
+            currLarge = current;
+        }
+        current = current->next;
+    }
+    currLarge->next = NULL;
+    currSmall->next = dummyLargeNode->next;
+    return dummySmallNode->next;
+}
+
 int main(int argc, const char * argv[]) {
     ListNode *node1 = new ListNode(1);
     ListNode *node2 = new ListNode(4);
@@ -69,7 +94,7 @@ int main(int argc, const char * argv[]) {
     node4->next = node5;
     node5->next = node6;
     
-    ListNode *result = partition(NULL, 13);
+    ListNode *result = partition(node1, 0);
     std::cout << result << "\n";
     return 0;
 }
@@ -102,7 +127,7 @@ int main(int argc, const char * argv[]) {
 /*
 ###算法
  1, 创建两个dummy node, 一个用来记录比x小的nodes，一个记录大于等于x的nodes
- 2, 根据currLarge或者currSmall有没有NULL，即case 3，4的情况，决定输出结果，拼接或者直接返回某一个。
+ 2, Solution 1 需要注意根据currLarge或者currSmall有没有NULL，即case 3，4的情况，决定输出结果，拼接或者直接返回某一个。Solution 2 不需要考虑
 
 ###代码实现
 ***有什么要注意的地方
