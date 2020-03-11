@@ -97,7 +97,7 @@ void reorderList(ListNode * head) {
 }
 
 int main(int argc, const char * argv[]) {
-     ListNode *node1 = new ListNode(1);
+    ListNode *node1 = new ListNode(1);
     ListNode *node2 = new ListNode(2);
     ListNode *node3 = new ListNode(3);
     ListNode *node4 = new ListNode(4);
@@ -139,4 +139,5 @@ Time complexity: O(n)
 Space complexity: solution 1为O(n),因为开辟了stack和queue用于存放nodes，solution 2为O(1)
 
 ###相关的题目有哪些
+1292. Odd Even Linked List
 */
