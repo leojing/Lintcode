@@ -31,6 +31,9 @@ public:
     }
 };
 
+// Solution 1:
+
+// Time: O(N), Space: O(N)
 vector<int> flatListNode(ListNode * head) {
     vector<int> result;
     while (head) {
@@ -40,7 +43,7 @@ vector<int> flatListNode(ListNode * head) {
     return result;
 }
 
-// Solution 1
+// Time: O(logN), Space: O(logN)
 TreeNode * makeTreeNode(vector<int> nodes, int start, int end) {
     if (end < start) {
         return NULL;
@@ -64,13 +67,58 @@ TreeNode * makeTreeNode(vector<int> nodes, int start, int end) {
     return root;
 }
 
-TreeNode * sortedListToBST(ListNode * head) {
+TreeNode * sortedListToBST1(ListNode * head) {
     if (head == NULL) {
         return NULL;
     }
     vector<int> nodes = flatListNode(head);
     int length = int(nodes.size());
     return makeTreeNode(nodes, 0, length-1);
+}
+
+// Soultion 3:
+
+ListNode *mainHead;
+
+// Time: O(N), Space: O(1)
+int findListSize(ListNode * head) {
+    int count = 0;
+    while (head) {
+        head = head->next;
+        count ++;
+    }
+    return count;
+}
+
+// Time: O(logN), Space: O(logN)
+TreeNode * convertToTreeNode(int start, int end) {
+    if (start > end) {
+        return NULL;
+    }
+    if (mainHead == NULL) {
+        return NULL;
+    }
+    
+    int mid = start + (end - start)/2;
+    TreeNode *left = convertToTreeNode(start, mid-1);
+    
+    TreeNode *current = new TreeNode(mainHead->val);
+    current->left = left;
+    
+    mainHead = mainHead->next;
+    TreeNode *right = convertToTreeNode(mid+1, end);
+    current->right = right;
+    
+    return current;
+}
+
+TreeNode * sortedListToBST(ListNode * head) {
+    if (head == NULL) {
+        return NULL;
+    }
+    mainHead = head;
+    int size = findListSize(head);
+    return convertToTreeNode(0, size-1);
 }
 
 int main(int argc, const char * argv[]) {
@@ -88,6 +136,7 @@ int main(int argc, const char * argv[]) {
     node4->next = node5;
     node5->next = node6;
     node6->next = node7;
+    TreeNode *result1 = sortedListToBST1(node1);
     TreeNode *result = sortedListToBST(node1);
     return 0;
 }
